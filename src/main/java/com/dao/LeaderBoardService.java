@@ -13,24 +13,24 @@ public class LeaderBoardService {
 	@Autowired
 	LeaderBoardDAO leaderboardimpl;
 	
-	public void add(LeaderBoard team) {
-		leaderboardimpl.addTeam(team);
+	public void add(LeaderBoard leaderBoard) {
+		leaderboardimpl.addLeaderBoard(leaderBoard);
 	}
 	
-	public LeaderBoard findItem(int id) {
-		return leaderboardimpl.findteam(id);
+	public LeaderBoard findLeaderBoard(int id) {
+		return leaderboardimpl.findLeaderBoard(id);
 	}
 	
-	public List<LeaderBoard> findAllTeam() {
-		return leaderboardimpl.findAllTeam();
+	public List<LeaderBoard> findAllLeaderBoard() {
+		return leaderboardimpl.findAllLeaderBoard();
 	}
 	
-	public boolean update(LeaderBoard team) {
-		return leaderboardimpl.updateTeam(team);
+	public boolean update(LeaderBoard leaderBoard) {
+		return leaderboardimpl.updateLeaderBoard(leaderBoard);
 	}
 	
 	public boolean delete(int id) {
-		return leaderboardimpl.deleteTeam(id);
+		return leaderboardimpl.deleteLeaderBoard(id);
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -12,7 +13,7 @@ import javax.validation.constraints.NotNull;
 public class Bidder {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int bidderId;
 	
 	@NotNull(message="userName cannot be null")
@@ -32,8 +33,19 @@ public class Bidder {
 	
 	@ManyToOne
 	private LeaderBoard leaderBoard;
+	
+	@ManyToOne
+	private System system;
 
 	
+	public System getSystem() {
+		return system;
+	}
+
+	public void setSystem(System system) {
+		this.system = system;
+	}
+
 	public LeaderBoard getLeaderBoard() {
 		return leaderBoard;
 	}

@@ -26,15 +26,15 @@ public class BidderController {
 	BidderService BidderService;
 	
 	@PostMapping("/addBidder")
-	public ResponseEntity<?> addTeam(@RequestBody Bidder bidder) {
+	public ResponseEntity<?> addBidder(@RequestBody Bidder bidder) {
 		BidderService.add(bidder);
 		return ResponseEntity.status(HttpStatus.OK).body("Bidder added succesfully");
 	}
 	
 	
 	@DeleteMapping("/deleteBidder/{id}")
-	public ResponseEntity<?> deleteItem(@PathVariable int id) throws DeleteBidderException {
-		Bidder bidder = BidderService.findTeam(id);
+	public ResponseEntity<?> deleteBidder(@PathVariable int id) throws DeleteBidderException {
+		Bidder bidder = BidderService.findBidder(id);
 		if(BidderService==null) {
 			throw new DeleteBidderException(id);
 		}
@@ -44,30 +44,30 @@ public class BidderController {
 	
 	
 	@PatchMapping("/updateBidder")
-	public ResponseEntity<?> updateTeam(@RequestBody Bidder team) throws UpdateBidderException{
-		Bidder Bidder1=BidderService.findTeam(team.getBidderId());
+	public ResponseEntity<?> updateBidder(@RequestBody Bidder bidder) throws UpdateBidderException{
+		Bidder Bidder1=BidderService.findBidder(bidder.getBidderId());
 		if(Bidder1==null) {
 			throw new UpdateBidderException();
 		}
-		BidderService.update(team);
+		BidderService.update(bidder);
 		return ResponseEntity.ok("Bidder updated succesfully");
 	}
 	
 	@GetMapping("/findBidder/{id}")
 	public ResponseEntity<?> findBidder(@PathVariable int id)throws FindAllBidderException{
 		
-		Bidder Bidder2=BidderService.findTeam(id);
+		Bidder Bidder2=BidderService.findBidder(id);
 		if(Bidder2==null) {
 			throw new FindAllBidderException
 			
 			();
 		}
-		BidderService.findTeam(id);
+		BidderService.findBidder(id);
 		return ResponseEntity.ok("element find succesfully");
 	}
 	
 	@GetMapping("/findallBidder")
-	public List<Bidder> findAllTeam(){
-		return BidderService.findAllTeam();	
+	public List<Bidder> findAllBidder(){
+		return BidderService.findAllBidder();	
 	}
 }

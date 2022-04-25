@@ -16,24 +16,24 @@ public class BidderService {
 		@Autowired
 		BidderDAO bidderdaoimpl;
 		
-		public void add(Bidder team) {
-			bidderdaoimpl.addTeam(team);
+		public void add(Bidder bidder) {
+			bidderdaoimpl.addBidder(bidder);
 		}
 		
-		public Bidder findTeam(int id) {
-			return bidderdaoimpl.findteam(id);
+		public Bidder findBidder(int id) {
+			return bidderdaoimpl.findBidder(id);
 		}
 		
-		public List<Bidder> findAllTeam() {
-			return bidderdaoimpl.findAllTeam();
+		public List<Bidder> findAllBidder() {
+			return bidderdaoimpl.findAllBidder();
 		}
 		
-		public boolean update(Bidder team) {
-			return bidderdaoimpl.updateTeam(team);
+		public boolean update(Bidder bidder) {
+			return bidderdaoimpl.updateBidder(bidder);
 		}
 		
 		public boolean delete(int id) {
-			return bidderdaoimpl.deleteTeam(id);
+			return bidderdaoimpl.deleteBidder(id);
 		}
 
 }

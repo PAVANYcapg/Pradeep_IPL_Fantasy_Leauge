@@ -1,6 +1,6 @@
 package com.sample.IplFantasyLeauge;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 import java.sql.Date;
 import java.util.List;
@@ -31,7 +31,7 @@ class LeaderBoardTest {
 		leaderBoard.setBidder_ranking(1);
 		leaderBoardService.add(leaderBoard);
 
-		LeaderBoard to_be_tested = leaderBoardService.findItem(leaderBoard.getBidderId());
+		LeaderBoard to_be_tested = leaderBoardService.findLeaderBoard(leaderBoard.getBidderId());
 		Assert.assertEquals(1, to_be_tested.getBidderId());
 
 		Assert.assertEquals(1, to_be_tested.getBidsParticipated());
@@ -39,7 +39,7 @@ class LeaderBoardTest {
 	}
 
 	@Test
-	void testFindItem() {
+	void testFindLeaderBoard() {
 		LeaderBoard leaderBoard1 = new LeaderBoard();
 		leaderBoard1.setBidsParticipated(2);
 		leaderBoard1.setBidsWon(2);
@@ -48,12 +48,12 @@ class LeaderBoardTest {
 		leaderBoard1.setBidder_ranking(3);
 		leaderBoardService.add(leaderBoard1);
 		
-		LeaderBoard to_be_tested =leaderBoardService.findItem(1); 
+		LeaderBoard to_be_tested =leaderBoardService.findLeaderBoard(1); 
 		Assert.assertEquals(1, to_be_tested.getBidsParticipated());
 	}
 
 	@Test
-	void testFindAllTeam() {
+	void testFindAllLeaderBoard() {
 		LeaderBoard leaderBoard2 = new LeaderBoard();
 		leaderBoard2.setBidsParticipated(5);
 		leaderBoard2.setBidsWon(15);
@@ -62,8 +62,8 @@ class LeaderBoardTest {
 		leaderBoard2.setBidder_ranking(5);
 		leaderBoardService.add(leaderBoard2);
 		
-		List<LeaderBoard>leaderBoardlist = leaderBoardService.findAllTeam();
-		Assert.assertEquals(2, leaderBoardlist.size());
+		List<LeaderBoard>leaderBoardlist = leaderBoardService.findAllLeaderBoard();
+		Assert.assertEquals(3, leaderBoardlist.size());
 
 	}
 
@@ -73,7 +73,7 @@ class LeaderBoardTest {
 		//leaderBoard4.setBidsWon(13);
 		//leaderBoardService.update(leaderBoard4);
 		
-		LeaderBoard leaderBoard3=leaderBoardService.findItem(3);
+		LeaderBoard leaderBoard3=leaderBoardService.findLeaderBoard(3);
 		leaderBoard3.setBidsParticipated(5);
 //		leaderBoard3.setBidsWon(11);
 //		leaderBoard3.setBidsLost(5);
@@ -91,9 +91,9 @@ class LeaderBoardTest {
 
 	@Test
 	void testDelete() {
-		LeaderBoard leaderBoard=leaderBoardService.findItem(2);
+		LeaderBoard leaderBoard=leaderBoardService.findLeaderBoard(2);
 		leaderBoardService.delete(leaderBoard.getBidderId());
-		LeaderBoard leaderBoard2=leaderBoardService.findItem(leaderBoard.getBidderId());
+		LeaderBoard leaderBoard2=leaderBoardService.findLeaderBoard(leaderBoard.getBidderId());
        Assert.assertNull(leaderBoard2);
        
       // boolean isDelete= leaderBoardService.delete(2);

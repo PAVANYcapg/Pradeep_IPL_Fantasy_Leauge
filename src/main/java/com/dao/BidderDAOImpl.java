@@ -16,11 +16,11 @@ public class BidderDAOImpl implements BidderDAO {
 	SessionFactory sessionFactory;
 
 	@Override
-	public void addTeam(Bidder team) {
+	public void addBidder(Bidder bidder) {
 		// TODO Auto-generated method stub
 			Session session=sessionFactory.openSession();
 			session.getTransaction().begin();
-			session.save(team);
+			session.save(bidder);
 			session.flush();
 			session.getTransaction().commit();
 			session.close();
@@ -28,14 +28,14 @@ public class BidderDAOImpl implements BidderDAO {
 	}
 
 	@Override
-	public Bidder findteam(int id) {
+	public Bidder findBidder(int id) {
 			Session session = sessionFactory.openSession();
 			Bidder bidder = session.get(Bidder.class, id); 
 			return bidder;
 	}
 
 	@Override
-	public List<Bidder> findAllTeam() {
+	public List<Bidder> findAllBidder() {
 		// TODO Auto-generated method stub
 			Session session = sessionFactory.openSession();
 			List<Bidder> bidder=session.createQuery("select i from Bidder i").list();
@@ -43,11 +43,11 @@ public class BidderDAOImpl implements BidderDAO {
 	}
 
 	@Override
-	public boolean updateTeam(Bidder team) {
+	public boolean updateBidder(Bidder bidder) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		session.getTransaction().begin();
-		session.update(team);
+		session.update(bidder);
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
@@ -55,7 +55,7 @@ public class BidderDAOImpl implements BidderDAO {
 	}
 
 	@Override
-	public boolean deleteTeam(int id) {
+	public boolean deleteBidder(int id) {
 			Session session = sessionFactory.openSession();
 			Bidder bidder=session.find(Bidder.class,id);
 			session.getTransaction().begin();

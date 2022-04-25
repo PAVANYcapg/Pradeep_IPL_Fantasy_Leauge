@@ -28,7 +28,7 @@ class BidderTest {
 		bidder.setPhoneNo("1234567890");
 		bidderService.add(bidder);
 		
-		Bidder to_be_tested =bidderService.findTeam(bidder.getBidderId()); 
+		Bidder to_be_tested =bidderService.findBidder(bidder.getBidderId()); 
 		Assert.assertEquals("Pradeep",to_be_tested.getUserName());
 		Assert.assertEquals("1234",to_be_tested.getPassword());
 		Assert.assertEquals("sathya",to_be_tested.getName());
@@ -47,7 +47,7 @@ class BidderTest {
 		bidder1.setPhoneNo("0987456321");
 		bidderService.add(bidder1);
 		
-		Bidder to_be_tested =bidderService.findTeam(bidder1.getBidderId()); 
+		Bidder to_be_tested =bidderService.findBidder(bidder1.getBidderId()); 
 		Assert.assertEquals("Pavan",to_be_tested.getUserName());
 		Assert.assertEquals("12345",to_be_tested.getPassword());
 		
@@ -71,7 +71,7 @@ class BidderTest {
 		bidder3.setPhoneNo("0987456321");
 		bidderService.add(bidder3);
 
-		List<Bidder> bidderlist = bidderService.findAllTeam();
+		List<Bidder> bidderlist = bidderService.findAllBidder();
 		Assert.assertEquals(bidderlist.get(1).getUserName(), "Ranjan");
 
 	}
@@ -79,7 +79,7 @@ class BidderTest {
 	@Test
 	void testUpdate() {
 		Bidder bidder4 = new Bidder();
-		Bidder bidder5=bidderService.findTeam(1);
+		Bidder bidder5=bidderService.findBidder(1);
 		bidder5.setUserName("Pavan_Updated");
 		bidder5.setName("sathya");
 		bidder5.setEmail("simha8096@gmail.com");
@@ -87,16 +87,16 @@ class BidderTest {
 		bidder5.setPhoneNo("0987456321");
 		bidderService.update(bidder5);
 
-		Bidder bidder6 = bidderService.findTeam(1);
+		Bidder bidder6 = bidderService.findBidder(1);
 
 		Assert.assertEquals("sathya", bidder6.getName());
 		}
 
 	@Test
 	void testDelete() {
-		Bidder bidder6=bidderService.findTeam(2);
+		Bidder bidder6=bidderService.findBidder(2);
 		bidderService.delete(bidder6.getBidderId());
-		Bidder bidder7 = bidderService.findTeam(2);
+		Bidder bidder7 = bidderService.findBidder(2);
 		
 		Assert.assertNull(bidder7);
 	}

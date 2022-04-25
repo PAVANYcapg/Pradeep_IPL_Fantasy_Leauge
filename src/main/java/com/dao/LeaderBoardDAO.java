@@ -9,11 +9,11 @@ import com.model.LeaderBoard;
 @Repository
 public interface LeaderBoardDAO {
 	
-	public void addTeam(LeaderBoard team);
-	public LeaderBoard findteam(int id);
-	public List<LeaderBoard> findAllTeam();
-	public boolean updateTeam(LeaderBoard team);
-	public boolean deleteTeam(int id);
+	public void addLeaderBoard(LeaderBoard leaderBoard);
+	public LeaderBoard findLeaderBoard(int id);
+	public List<LeaderBoard> findAllLeaderBoard();
+	public boolean updateLeaderBoard(LeaderBoard leadderBoard);
+	public boolean deleteLeaderBoard(int id);
 	
 	
 

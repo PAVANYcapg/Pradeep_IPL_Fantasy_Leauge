@@ -17,10 +17,10 @@ public class LeaderBoardDAOImpl implements LeaderBoardDAO {
 	SessionFactory sessionFactory;
 
 	@Override
-	public void addTeam(LeaderBoard team) {
+	public void addLeaderBoard(LeaderBoard leaderBoard) {
 		Session session=sessionFactory.openSession();
 		session.getTransaction().begin();
-		session.save(team);
+		session.save(leaderBoard);
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
@@ -28,7 +28,7 @@ public class LeaderBoardDAOImpl implements LeaderBoardDAO {
 	}
 
 	@Override
-	public LeaderBoard findteam(int id) {
+	public LeaderBoard findLeaderBoard(int id) {
 		Session session = sessionFactory.openSession();
 		LeaderBoard leaderboard = session.find(LeaderBoard.class, id); 
 		session.close();
@@ -36,17 +36,17 @@ public class LeaderBoardDAOImpl implements LeaderBoardDAO {
 	}
 
 	@Override
-	public List<LeaderBoard> findAllTeam() {
+	public List<LeaderBoard> findAllLeaderBoard() {
 		Session session = sessionFactory.openSession();
 		List<LeaderBoard> leaderboard=session.createQuery("select i from LeaderBoard i").list();
 		return leaderboard;
 	}
 
 	@Override
-	public boolean updateTeam(LeaderBoard team) {
+	public boolean updateLeaderBoard(LeaderBoard leaderBoard) {
 		Session session = sessionFactory.openSession();
 		session.getTransaction().begin();
-		session.update(team);
+		session.update(leaderBoard);
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
@@ -54,7 +54,7 @@ public class LeaderBoardDAOImpl implements LeaderBoardDAO {
 	}
 
 	@Override
-	public boolean deleteTeam(int  id) {
+	public boolean deleteLeaderBoard(int  id) {
 		Session session = sessionFactory.openSession();
 		session.getTransaction().begin();
 		LeaderBoard leaderBoard=session.find(LeaderBoard.class,id);
